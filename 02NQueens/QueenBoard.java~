@@ -33,10 +33,11 @@ public class QueenBoard{
 		solveH(col+1);
 	    }else{
 		queens = false;
+		removeQueen(row,col);
 	    }
 	}
-	removeQueen(Row, col);
-	solveH(col-1);
+	//	removeQueen(Row, col);
+	//solveH(col-1);
 	return queens;
     }
 
