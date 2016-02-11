@@ -53,7 +53,7 @@ public class QueenBoard{
 	    }
             ans+="\n";
         }
-        return ans;
+	System.out.println(ans);
     }
 
     /********Do Not Edit Below This Line**********************************/

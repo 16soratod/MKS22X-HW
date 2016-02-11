@@ -42,10 +42,18 @@ public class QueenBoard{
     }
 
     public void printSolution(){
-	/**Print the board like toString, except
-	      all negative numbers, and 0's are replaced with '_'
-	         and all 1's are replaced with 'Q'
-	*/
+	String ans = "";
+        for(int r = 0; r < board.length; r++){
+            for(int c = 0; c < board[0].length; c++){
+		if(board[r][c] == 1){
+		    ans += "Q" + "\t";;
+		}else{
+		    ans += "_"+"\t";
+		}
+	    }
+            ans+="\n";
+        }
+        return ans;
     }
 
     /********Do Not Edit Below This Line**********************************/
