@@ -23,23 +23,34 @@ public class QueenBoard{
      *Helper method fr solve. 
      */
     private boolean solveH(int col){
-	//for(int i = 0; i < board[col].length; i++){
-	boolean queens = true;
+	boolean queen = true;
 	int Row = 0;
-	for(int row = 0; row < board.length; row++){
-	    if(board[row][col] == 0 && queens){
-		Row = row;
-		addQueen(row,col);
-		solveH(col+1);
-	    }else{
-		queens = false;
-		removeQueen(row,col);
+	if(col>=board.length){
+	    return true;
+	}else if(col < 0){
+	    return false;
+	}else if(col>=0){
+	    for(int row = 0; row < board.length; row++){
+		if(board[row][col] == 0){
+		    Row = row;
+		    addQueen(row,col);
+		    return solveH(col+1);
+		}
+	    }
+		//}
+	    // if(board[Row][col] != 0){
+	    for(int row = 0; row < board.length; row++){
+		if(board[row][col-1] == 1){
+		    removeQueen(row,col-1);
+		    board[row][col-1] = -1;
+		    queen = false;
+		    return solveH(col-1);
+		}
 	    }
 	}
-	//	removeQueen(Row, col);
-	//solveH(col-1);
-	return queens;
+	return queen;
     }
+
 
     public void printSolution(){
 	String ans = "";
@@ -53,7 +64,7 @@ public class QueenBoard{
 	    }
             ans+="\n";
         }
-        return ans;
+	System.out.println(ans);
     }
 
     /********Do Not Edit Below This Line**********************************/
@@ -109,16 +120,43 @@ public class QueenBoard{
     
     public static void main(String[]args){
 	QueenBoard b = new QueenBoard(5);
-        System.out.println(b);
+        System.out.println("Pre-Test Cases:");
+	System.out.println(b);
 	b.addQueen(3,0);
 	b.addQueen(0,1);
         System.out.println(b);
 	b.removeQueen(3,0);
         System.out.println(b);
 	QueenBoard a = new QueenBoard(2);
-	System.out.println(a);
-	a.solve();
-	System.out.println(a);
+        System.out.println("2 * 2");
+        System.out.println(a);
+        a.solve();
+        System.out.println(a);
+        a.printSolution();
+	QueenBoard b1 = new QueenBoard(3);
+        System.out.println("3 * 3");
+        System.out.println(b1);
+        b1.solve();
+        System.out.println(b1);
+        b1.printSolution();
+	QueenBoard c = new QueenBoard(4);
+	System.out.println("4 * 4");
+	System.out.println(c);
+	c.solve();
+	System.out.println(c);
+	c.printSolution();
+	QueenBoard d = new QueenBoard(10);
+        System.out.println("10 * 10");
+        System.out.println(d);
+        d.solve();
+        System.out.println(d);
+        d.printSolution();
+	QueenBoard e = new QueenBoard(52);
+        System.out.println("52 * 52");
+        System.out.println(e);
+        e.solve();
+        System.out.println(e);
+        e.printSolution();
     }
     
     
