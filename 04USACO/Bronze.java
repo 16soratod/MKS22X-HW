@@ -1,5 +1,7 @@
+import java.util.Scanner;
 public class Bronze{
     public static void main(String[]args){
-	File input = new File("Input.txt");
+	String name = "makelake.txt";
+	Scanner input = new Scanner(name);
     }
 }
