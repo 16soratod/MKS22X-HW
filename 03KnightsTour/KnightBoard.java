@@ -40,6 +40,22 @@ public class KnightBoard{
 	return true;
     }
 
+    public void printSolution(){
+	String ret  = "";
+	for (int x = 0; x < board.length; x ++){
+	    for (int y = 0; y < board[0].length; y ++){
+		if (board[x][y] >= 1000){
+		    ret = ret + " " + board[x][y] + " ";
+		}else if (board[x][y] >= 100){
+		    ret = ret + " " + board[x][y] + "  ";
+		}else if (board[x][y] >= 10){
+		    ret = ret + " " + board[x][y] + "   ";
+		}else{
+		    ret = ret + " " +  board[x][y] + "    ";
+		}
+	    }
+	    ret += "\n";
+	}
     public static void main(String[]args){
 	KnightBoard a = new KnightBoard(4);
 	System.out.println(a);
