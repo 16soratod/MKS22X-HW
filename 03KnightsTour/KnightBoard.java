@@ -34,10 +34,36 @@ public class KnightBoard{
     }
 
     public boolean solve(){
-	if(rBoard.length < 4){
+	return solveH(1,0,0);
+    }
+
+    public boolean solveH(int start, int x, int y){
+	if(x < 0 || x >= rboard.length || y < 0 || y >= board.length){
 	    return false;
 	}
-	return true;
+	if(board[x][y] >= 1){
+	    return false;
+	}
+	
+	if(start == rboard.length * board.length){
+	    board[x][y] = moveNum;
+	    return true;
+	}
+	
+	board[x][y] = start;
+	if (solveH(start + 1, x + 1, y - 2) ||
+	    solveH(start + 1, x + 2, y - 1) ||
+	    solveH(start + 1, x + 2, y + 1) ||
+	    solveH(start + 1, x + 1, y + 2) ||
+	    solveH(start + 1, x - 1, y + 2) ||
+	    solveH(start + 1, x - 2, y + 1) ||
+	    solveH(start + 1, x - 2, y - 1) ||
+	    solveH(start + 1, x - 1, y - 2)){
+	    return true;
+	}else{
+	    board[x][y] = 0;
+	    return false;
+	}
     }
 
     public void printSolution(){
