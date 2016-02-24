@@ -21,6 +21,8 @@ public class Bronze{
 				String name = "makelake.in";
 				File file = new File(name);
 				Scanner in = new Scanner(file);
+				int r;
+				int c;
 				field = new int[r][c];
 				r = Integer.parseInt(in.next());
 				c = Integer.parseInt(in.next());
@@ -54,7 +56,7 @@ public class Bronze{
 	public static void print(int[][] b){
 		String ret  = "";
 		for (int i = 0; i < b.length; i ++){
-			for (int j = 0; j < b0].length; j ++){
+			for (int j = 0; j < b[0].length; j ++){
 				if (b[i][j] >= 1000){
 					ret = ret + " " + b[i][j] + " ";
 				}else if (b[i][j] >= 100){
@@ -62,7 +64,7 @@ public class Bronze{
 				}else if (b[i][j] >= 10){
 					ret = ret + " " + b[i][j] + "   ";
 				}else{
-					ret = ret + " " +  board[i][j] + "    ";
+					ret = ret + " " +  b[i][j] + "    ";
 				}
 			}
 			ret += "\n";
