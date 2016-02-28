@@ -1,5 +1,5 @@
 import java.util.*;
-import java.io.*;
+import java.io.*; 
 
 public class Maze{
 
@@ -20,7 +20,8 @@ public class Maze{
     */
     public Maze(String filename, boolean ani){
         //COMPLETE CONSTRUTOR
-        Scanner
+        Scanner in = new Scanner;
+        
     }
 
 
