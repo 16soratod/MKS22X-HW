@@ -27,6 +27,8 @@ public class Maze{
         File file = new File(filename);
         Scanner in = new Scanner(file);
         maze = new char[row][col];
+        row = Integer.parseInt(in.next())
+        //for(int i = 0; i < row)
 
 
     }

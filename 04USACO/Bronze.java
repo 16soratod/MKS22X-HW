@@ -18,24 +18,22 @@ public class Bronze{
 		}else{
 			try
 			{
-				String name = "makelake.in";
+				String name = args[0];
 				File file = new File(name);
 				Scanner in = new Scanner(file);
-				int r;
-				int c;
-				field = new int[r][c];
 				r = Integer.parseInt(in.next());
 				c = Integer.parseInt(in.next());
 				elev = Integer.parseInt(in.next());
 				stomps = Integer.parseInt(in.next());
-				for (int i = 0; i < r; i++) {
-					for (int j = 0; j < c; j++) {
-						field[r][c] = Integer.parseInt(in.next());	
-					}
-				}
+				field = new int[r][c];
 				stompR = new int[stomps];
 				stompC = new int[stomps];
 				stompD = new int[stomps];
+				for (int i = 0; i < r; i++) {
+					for (int j = 0; j < c; j++) {
+						field[i][j] = Integer.parseInt(in.next());	
+					}
+				}
 				for (int i = 0; i < stomps; i++) {
 					stompR[i] = Integer.parseInt(in.next());
 					stompC[i] = Integer.parseInt(in.next());					
@@ -113,6 +111,6 @@ public class Bronze{
 				newDep += fieldDep[row][col];
 			}
 		}
-		return newDep;
+		return 5184 * newDep;
 	}
 }
