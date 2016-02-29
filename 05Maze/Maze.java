@@ -1,5 +1,7 @@
 import java.util.*;
 import java.io.*; 
+import java.util.Scanner;
+import java.io.FileNotFoundException;
 
 public class Maze{
 
@@ -20,17 +22,26 @@ public class Maze{
     */
     public Maze(String filename, boolean ani){
         //COMPLETE CONSTRUTOR
-        int row;
-        int col;
-        String r;
-        String c;
-        File file = new File(filename);
-        Scanner in = new Scanner(file);
-        maze = new char[row][col];
-        row = Integer.parseInt(in.next())
-        //for(int i = 0; i < row)
-
-
+        try{
+            int row;
+            int col;
+            String r;
+            String c;
+            String text = "";
+            File file = new File(filename);
+            Scanner in = new Scanner(file);
+            text = in.next();
+            row = Integer.parseInt(in.next());
+            col = Integer.parseInt(in.next());
+            maze = new char[row][col];
+            for(int i = 0; i < row; i++){
+                for (int j = 0; j < col; j++){
+                    maze[i][j] = text.charAt(i+j);
+                }
+            }
+        }catch(FileNotFoundException e){
+            System.out.println("File not found");
+        }
     }
 
 
@@ -70,6 +81,9 @@ public class Maze{
         }
 
         //COMPLETE SOLVE
+        /*
+        for(int x = 0; x < 9; x++){    
+        }*/
         return false; //so it compiles
     }
 
