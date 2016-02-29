@@ -24,25 +24,25 @@ public class QueenBoard{
      */
     private boolean solveH(int col){
 	boolean queen = true;
-	int Row = 0;
+	int rowStart = 0;
 	if(col>=board.length){
 	    return true;
 	}else if(col < 0 || board.length == 2 || board.length == 3){
 	    return false;
-	}else if(col>=0){
+	}else{
 	    for(int row = 0; row < board.length; row++){
 		if(board[row][col] == 0){
-		    Row = row;
-		    addQueen(row,col);
+		    rowStart = row;
+		    addQueen(rowStart,col);
 		    return solveH(col+1);
 		}
 	    }
 		//}
 	    // if(board[Row][col] != 0){
 	    for(int row = 0; row < board.length; row++){
-		if(board[row][col-1] == 1){
+		if(board[row][col] == 1){
 		    removeQueen(row,col-1);
-		    board[row][col-1] = -1;
+		    board[row][col] = -1;
 		    queen = false;
 		    return solveH(col-1);
 		}

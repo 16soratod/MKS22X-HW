@@ -81,9 +81,10 @@ public class KnightBoard{
 		}
 	    }
 	    ret += "\n";
-	}
-    public static void main(String[]args){
-	KnightBoard a = new KnightBoard(4);
-	System.out.println(a);
+        }
     }
-}
+    public static void main(String[] args){
+        KnightBoard a = new KnightBoard(4);
+        System.out.println(a);
+        }     
+    }   

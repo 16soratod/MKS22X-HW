@@ -20,8 +20,15 @@ public class Maze{
     */
     public Maze(String filename, boolean ani){
         //COMPLETE CONSTRUTOR
-        Scanner in = new Scanner;
-        
+        int row;
+        int col;
+        String r;
+        String c;
+        File file = new File(filename);
+        Scanner in = new Scanner(file);
+        maze = new char[row][col];
+
+
     }
 
 
