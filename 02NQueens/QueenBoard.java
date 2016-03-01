@@ -23,32 +23,35 @@ public class QueenBoard{
      *Helper method fr solve. 
      */
     private boolean solveH(int col){
-	boolean queen = true;
+	//boolean queen = true;
 	int rowStart = 0;
 	if(col>=board.length){
 	    return true;
-	}else if(col < 0 || board.length == 2 || board.length == 3){
-	    return false;
+	//}else if(col < 0 || board.length == 2 || board.length == 3){
+	   // return false;
 	}else{
 	    for(int row = 0; row < board.length; row++){
-		if(board[row][col] == 0){
-		    rowStart = row;
-		    addQueen(rowStart,col);
-		    return solveH(col+1);
-		}
+		if(board[row][col] >= 0){
+		    //rowStart = row;
+		    addQueen(row,col);
+		    if(solveH(col+1)){
+		    	return true;
+			}else{
+				removeQueen(row,col);
+			}
 	    }
 		//}
 	    // if(board[Row][col] != 0){
-	    for(int row = 0; row < board.length; row++){
-		if(board[row][col] == 1){
-		    removeQueen(row,col-1);
-		    board[row][col] = -1;
-		    queen = false;
-		    return solveH(col-1);
-		}
+	    //for(int row = 0; row < board.length; row++){
+		//if(board[row][col] == 1){
+		  //  removeQueen(row,col-1);
+		    //board[row][col] = -1;
+		    //queen = false;
+		    //return solveH(col-1);
+		//}
 	    }
 	}
-	return queen;
+	return false;
     }
 
 

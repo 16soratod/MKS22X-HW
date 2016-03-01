@@ -47,7 +47,7 @@ public class KnightBoard{
     }
 	*/
     public boolean solve(){
-    if(r <= c){
+    /*if(r <= c){
     	if((r%2 != 0 && c%2 != 0) || r == 1 || r == 2 || r == 4 || (r == 3 && c == 4) || 
     		(r == 3 && c == 6) || (r == 3 && c == 8)){
     		return false;
@@ -57,7 +57,7 @@ public class KnightBoard{
     		(c == 3 && r == 6) || (c == 3 && r == 8)){
     		return false;
     	}	
-  	  }
+  	  }*/
     return solveH(1,0,0);
     }
 
@@ -101,17 +101,11 @@ public class KnightBoard{
 			}else if (board[i][j] >= 10){
 			    sol += " " + board[i][j] + "   ";
 			}else{
-		   		sol += " " +  board[i][j] + "    ";
+		   		sol += " _" +  board[i][j] + "   ";
 			}
 	    }
 	   	sol += "\n";
         }
     	System.out.println(sol);
-    }
-    public static void main(String[] args){
-        KnightBoard a = new KnightBoard(5);
-        System.out.println(a);
-        a.solve();
-        a.printSolution();
-        }     
-    }   
+    	}
+    } 
