@@ -7,8 +7,10 @@ public class Maze{
 
     private char[][]maze;
     private int startx,starty;
-    private int rows,cols;
     private boolean animate;
+
+    private int rows,cols;
+    private String touch;
 
     /*Constructor loads a maze text file.
       1. The file contains a rectangular ascii maze, made with the following 4 characters:
@@ -64,9 +66,10 @@ public class Maze{
         }
     }
 
-    public void getStart(){
+    public void getStuff(){
         System.out.println(startx);
         System.out.println(starty);
+        System.out.println(touch);
     }
 
     public void printmaze(){
@@ -175,7 +178,7 @@ public class Maze{
     //END FREE STUFF
     public static void main(String[]args){
         Maze a = new Maze("data1.dat", true);
-        a.getStart();
+        a.getStuff();
         a.printmaze();
     }
 
