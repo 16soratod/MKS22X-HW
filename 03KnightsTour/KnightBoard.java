@@ -25,6 +25,7 @@ public class KnightBoard{
     	c = cols;
     }
 
+    /*
     public boolean addKnight(int row, int col){
 	if(board[row][col] != 0){
 	    return false;
@@ -32,6 +33,7 @@ public class KnightBoard{
 	board[row][col] ++;
 	return true;
     }
+
 
     public String toString(){
 	String ans = "";
@@ -43,7 +45,7 @@ public class KnightBoard{
 	}
 	return ans;
     }
-
+	*/
     public boolean solve(){
     if(r <= c){
     	if((r%2 != 0 && c%2 != 0) || r == 1 || r == 2 || r == 4 || (r == 3 && c == 4) || 
@@ -60,24 +62,27 @@ public class KnightBoard{
     }
 
     public boolean solveH(int start, int x, int y){
+    	//check boundary
 	if(y < 0 || x < 0 || x >= r || y >= c){
 	    return false; 
 	}
-	if(board[x][y] != 0){
+		//base
+	if(board[x][y] >= 1){
 	    return false;
 	}
-	board[x][y] = start;
 	if(start == r*c){
+		board[x][y] = start;
 		return true;
 	}
-	if (solveH(start + 1, x + 1, y - 2) ||
+	board[x][y] = start; 
+	if (solveH(start + 1, x + 2, y + 1) ||
+		solveH(start + 1, x + 1, y - 2) ||
+		solveH(start + 1, x - 2, y - 1) ||
+		solveH(start + 1, x - 1, y + 2) ||
 	    solveH(start + 1, x + 2, y - 1) ||
-	    solveH(start + 1, x + 2, y + 1) ||
 	    solveH(start + 1, x + 1, y + 2) ||
-	    solveH(start + 1, x - 1, y + 2) ||
-	    solveH(start + 1, x - 2, y + 1) ||
-	    solveH(start + 1, x - 2, y - 1) ||
-	    solveH(start + 1, x - 1, y - 2)){
+	    solveH(start + 1, x - 1, y - 2) ||
+	    solveH(start + 1, x - 2, y + 1)){
 	    return true;
 	}else{
 	    board[x][y] = 0;
@@ -86,22 +91,22 @@ public class KnightBoard{
     }
 
     public void printSolution(){
-	String ret  = "";
+	String sol  = "";
 		for (int i = 0; i < board.length; i ++){
 	 	   for (int j = 0; j < board[0].length; j ++){
 			if (board[i][j] >= 1000){
-			    ret = ret + " " + board[i][j] + " ";
+			    sol += " " + board[i][j] + " ";
 			}else if (board[i][j] >= 100){
-			    ret = ret + " " + board[i][j] + "  ";
+			    sol += " " + board[i][j] + "  ";
 			}else if (board[i][j] >= 10){
-			    ret = ret + " " + board[i][j] + "   ";
+			    sol += " " + board[i][j] + "   ";
 			}else{
-		   		ret = ret + " " +  board[i][j] + "    ";
+		   		sol += " " +  board[i][j] + "    ";
 			}
 	    }
-	    ret += "\n";
+	   	sol += "\n";
         }
-    	System.out.println(ret);
+    	System.out.println(sol);
     }
     public static void main(String[] args){
         KnightBoard a = new KnightBoard(5);
