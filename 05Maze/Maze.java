@@ -7,6 +7,7 @@ public class Maze{
 
     private char[][]maze;
     private int startx,starty;
+    private int rows,cols;
     private boolean animate;
 
     /*Constructor loads a maze text file.
@@ -22,7 +23,7 @@ public class Maze{
     */
     public Maze(String filename, boolean ani){
         //COMPLETE CONSTRUTOR
-        try{
+    try{
             int row;
             int col;
             String r;
@@ -30,13 +31,32 @@ public class Maze{
             String text = "";
             File file = new File(filename);
             Scanner in = new Scanner(file);
-            text = in.next();
-            row = Integer.parseInt(in.next());
-            col = Integer.parseInt(in.next());
+            LineNumberReader read = new LineNumberReader(new FileReader(filename));
+            //text = in.next();
+            //row = Integer.parseInt(in.next());
+            //col = Integer.parseInt(in.next());
+            row = read.getLineNumber();
+            rows = row;
+            Scanner in2 = new Scanner(file);
+            col = in2.nextLine().length(); 
+            cols = col;
             maze = new char[row][col];
             for(int i = 0; i < row; i++){
                 for (int j = 0; j < col; j++){
                     maze[i][j] = text.charAt(i+j);
+                }
+            }
+            while(in.hasNext()){
+                text += in.next();
+            }
+            for(int i = 0; i < row; i++){
+                for(int j = 0; j < col; j++){
+                    if(maze[i][j] == 'S'){
+                        startx = i;
+                        starty = j;
+                        //System.out.println(startx);
+                        //System.out.println(starty);
+                    }
                 }
             }
         }catch(FileNotFoundException e){
@@ -44,7 +64,21 @@ public class Maze{
         }
     }
 
+    public void getStart(){
+        System.out.println(startx);
+        System.out.println(starty);
+    }
 
+    public void printmaze(){
+        String ret = "";
+            for(int i = 0; i < rows; i++){
+                for(int j = 0; j < cols; j++){
+                    ret += maze[i][j];
+
+                }
+            }
+            System.out.println(ret);
+    }
     /*Main Solve Function
 
       Things to note:
@@ -139,7 +173,11 @@ public class Maze{
 
     
     //END FREE STUFF
-
+    public static void main(String[]args){
+        Maze a = new Maze("data1.dat", true);
+        a.getStart();
+        a.printmaze();
+    }
 
 
 }

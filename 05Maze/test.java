@@ -16,11 +16,13 @@ public class test{
             String text = "";
             File file = new File(filename);
             Scanner in = new Scanner(file);
-            LineNumberReader read = new LineNumberReader(new FileReader(filename))
+            LineNumberReader read = new LineNumberReader(new FileReader(filename));
             text = in.next();
             //row = Integer.parseInt(in.next());
             //col = Integer.parseInt(in.next());
             row = read.getLineNumber();
+            Scanner in2 = new Scanner(file);
+            col = in2.nextLine().length(); 
             maze = new char[row][col];
             for(int i = 0; i < row; i++){
                 for (int j = 0; j < col; j++){
