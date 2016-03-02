@@ -1,19 +1,21 @@
 import java.util.*;
 import java.io.*; 
-import java.util.Scanner;
 import java.io.FileNotFoundException;
-import java.io.File;
 
 public class Silver{
 	int[][] pasture;
 	int result = 0;
 	int t, c, r;
 	int startR, startC, endR, endC;
+	Scanner in;
 
 	public Silver(){
 		try{
 			File file = new File("ctravel.in");
-			Scanner in = new Scanner(file);
+			in = new Scanner(file);
+		}catch(FileNotFoundException e){
+			System.out.println("file not in directory");
+		}
 			t = Integer.parseInt(in.next());
 			r = Integer.parseInt(in.next());
 			c = Integer.parseInt(in.next());
@@ -32,15 +34,12 @@ public class Silver{
 					}
 					ret = ret.substring(1);
 				}
+			}
 			startR = Integer.parseInt(in.next()) - 1;
 			startC = Integer.parseInt(in.next()) - 1;
 			endR = Integer.parseInt(in.next()) - 1;
 			endC = Integer.parseInt(in.next()) - 1;
 			pasture[startR][startC] = 1;
-			}
-		}catch(FileNotFoundException e){
-			System.out.println("file not in directory");
-		}
 	}
 	public void printPasture(){
 		String ret  = "";
