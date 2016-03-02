@@ -35,5 +35,6 @@ public class test{
     }
     public static void main(String[]args){
     	test a = new test("data1.dat");
+    	
     }
 }
