@@ -1,0 +1,26 @@
+-Easy version of merge (will make mergesort more complicated)
+The function should either take two arrays and merge them, returning a new array.
+int[] merge(int[]aryA, int[]aryB)
+
+Preconditions:
+The length of each array is at least one.
+Each array's has all of its elements in ascending order (sorted)
+
+
+-Better version (a little more work but will make mergesort much cleaner, because the copying happens here)
+The function can take an array, and the start/end indices of each part to be merged. it could then merge into a new array, and copy the results back.
+void merge(int[]data, int startA, endA, startB, endB)
+
+
+Preconditions:
+data.length >= 2
+the elements of data are in ascending order (sorted)
+startA <= endA 
+startB <= endB
+endA + 1 == startB
+startA >= 0
+endB < data.length
+
+-Best version:
+There is no BEST. 
+You can worry about optimizing later. Just make it work, and make it work with mergesort on Thursday.
