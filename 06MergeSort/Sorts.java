@@ -10,13 +10,13 @@ public class Sorts{
     public static void insertionSort(int[] data){
         for(int i = 1; i < data.length; i++){//start off with a for loop                                           
             if(data[i] < data[i-1] && i != -1){//if element on right is less than the one on left, and when i isn'\
-t -1 (there will be an error for out of bounds if not for this)                                                    
+//t -1 (there will be an error for out of bounds if not for this)                                                    
                 int n = data[i];//remember the element that you will be replacing                                  
                 data[i] = data[i-1];//replace element on right to the left                                         
                 data[i-1] = n;//move up the element on the left                                                    
                 insertionSort(data);//recursion: continue the above process until i reaches -1 and goes out of the\
- for loop or if the element on right is larger than the left. Basically keeps comparing the element on the right t\
-o the left.                                                                                                        
+ //for loop or if the element on right is larger than the left. Basically keeps comparing the element on the right t\
+//o the left.                                                                                                        
             }
         }
 
@@ -28,7 +28,7 @@ o the left.
 
 //////////////////////////////////////////////////////////////////////////////////////
     public static void merge(int[] data, int start, int end, int start1, int end1){
-        int[][] nData = new int[end1 - start1 + (end - start) + 2];
+        int[] nData = new int[end1 - start1 + (end - start) + 2];
         int count = start;
         if(start == start1){
             return;
@@ -50,7 +50,7 @@ o the left.
                 start1++;
             }
         }
-        for(int i = 0l i < nData.length; i++){
+        for(int i = 0; i < nData.length; i++){
             data[i + count] = nData[i];
         }
     }
@@ -61,7 +61,7 @@ o the left.
             return a/2;
         }
     }
-    public static mergeH(int[] data, int start, int end, int start1, int end1){
+    public static void mergeH(int[] data, int start, int end, int start1, int end1){
         if(start == end && start1 == end1){
             merge(data, start, end, start1, end1);
         }else if(start == end){
