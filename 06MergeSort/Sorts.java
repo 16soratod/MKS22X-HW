@@ -28,23 +28,24 @@ public class Sorts{
 
 //////////////////////////////////////////////////////////////////////////////////////
     public static void merge(int[] data, int start, int end, int start1, int end1){
-        int[] nData = new int[end1 - start1 + (end - start) + 2];
+        int[] nData = new int[(end1 - start1) + (end - start) + 2];
         int count = start;
         if(start == start1){
             return;
         }
-        if(start1<start){
+        if(start1 < start){
             count = start1;
         }
         for(int i = 0; i < nData.length; i++){
             if(start > end){
                 nData[i] = data[start1];
                 start1++;
-            }else if(start > end){
+            }else if(start1 > end1){
                 nData[i] = data[start];
                 start++;
             }else if(data[start] <= data[start1]){
                 nData[i] = data[start];
+                start++;
             }else if(data[start1] < data[start]){
                 nData[i] = data[start1];
                 start1++;
@@ -66,15 +67,15 @@ public class Sorts{
             merge(data, start, end, start1, end1);
         }else if(start == end){
             mergeH(data, start, end, start1, end1);
-            mergeH(data, start1, start1+half(end1-start1), start1+half(end1-start1)+1, end1);
+            mergeH(data, start1, start1 + half(end1-start1), start1 + half(end1-start1)+1, end1);
             merge(data, start, end, start1, end1);
         }else if(start1 == end1){
-            mergeH(data, start, start+ half(end-start), start+half(end-start)+1, end);
+            mergeH(data, start, start + half(end-start), start + half(end-start) + 1, end);
             mergeH(data, start1, end1, start1, end1);
             merge(data,start,end,start1,end1);
         }else{
             mergeH(data, start1, start1 + half(end-start), start + half(end-start) + 1, end);
-            mergeH(data, start1, start1 + half(end1-start1), start1 + half(end1 - start1), end1);
+            mergeH(data, start1, start1 + half(end1-start1), start1 + half(end1 - start1) + 1, end1);
             merge(data, start, end, start1, end1);
         }
     }
@@ -82,6 +83,7 @@ public class Sorts{
     public static void main(String[]args){
         int[] ary = { 8, 6, 7, 5, 3, 0, 9};
         int[] ary2 = { 2, 5, 8, 90, 1, 0, 0, 0, 24, 5, 8};
+        int[] ary3 = { 2, 5, 8, 90, 1, 0, 0, 0, 24, 5, 8};
         System.out.println("First test case");
         Sorts.printArray(ary);
         Sorts.insertionSort(ary);
@@ -90,5 +92,9 @@ public class Sorts{
         Sorts.printArray(ary2);
         Sorts.insertionSort(ary2);
         Sorts.printArray(ary2);
+        System.out.println("Third test case");
+        Sorts.printArray(ary3);
+        Sorts.mergeSort(ary3);
+        Sorts.printArray(ary3);
     }
 }
