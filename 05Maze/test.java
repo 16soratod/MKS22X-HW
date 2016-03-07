@@ -7,7 +7,8 @@ public class test{
  	private char[][]maze;
     private int startx,starty;
     private boolean animate;
-	public test(String filename){
+    private String file;
+	/*public test(String filename){
 		try{
             int row;
             int col;
@@ -33,8 +34,37 @@ public class test{
             System.out.println("File not found");
         }
     }
+    */
+    public test(String filename){
+        filename = file;
+    }
+    public static int countLines(String filename) throws IOException {
+    //filename = file;
+        InputStream is = new BufferedInputStream(new FileInputStream(filename));
+        try {
+            byte[] c = new byte[1024];
+            int count = 0;
+            int readChars = 0;
+            boolean empty = true;
+            while ((readChars = is.read(c)) != -1) {
+                empty = false;
+                for (int i = 0; i < readChars; ++i) {
+                    if (c[i] == '\n') {
+                        ++count;
+                    }
+                }
+            }
+            return (count == 0 && !empty) ? 1 : count;
+        }catch(IOException e){
+        System.err.println("Caught IOException: " + e.getMessage());
+        }
+        finally {
+            is.close();
+        }
+    }
     public static void main(String[]args){
     	test a = new test("data1.dat");
+        System.out.println(a.countLines("data1.dat"));
     	
     }
 }

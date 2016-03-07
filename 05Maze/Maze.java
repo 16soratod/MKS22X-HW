@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*; 
-import java.util.Scanner;
+import java.util.Scanner;	
 import java.io.FileNotFoundException;
 
 public class Maze{
@@ -26,31 +26,36 @@ public class Maze{
     public Maze(String filename, boolean ani){
         //COMPLETE CONSTRUTOR
     try{
-            int row;
-            int col;
+            int row = 0;
+            int col = 0;
             String r;
             String c;
             String text = "";
             File file = new File(filename);
             Scanner in = new Scanner(file);
             LineNumberReader read = new LineNumberReader(new FileReader(filename));
-            //text = in.next();
+            //text += in.next();
             //row = Integer.parseInt(in.next());
             //col = Integer.parseInt(in.next());
-            row = read.getLineNumber();
-            rows = row;
+            //row = read.getLineNumber();
+            //rows = row;
             Scanner in2 = new Scanner(file);
-            col = in2.nextLine().length(); 
-            cols = col;
-            maze = new char[row][col];
-            for(int i = 0; i < row; i++){
-                for (int j = 0; j < col; j++){
-                    maze[i][j] = text.charAt(i+j);
-                }
-            }
+            //col = in2.nextLine().length(); 
+            //cols = col;
+            //maze = new char[row][col];
+            //for(int i = 0; i < row; i++){
+            //    for (int j = 0; j < col; j++){
+            //        maze[i][j] = text.charAt(i+j);
+            //    }
+            //}
             while(in.hasNext()){
+                if(in.hasNextLine()){
+                    col++;
+                }
                 text += in.next();
             }
+            touch = text;
+            cols = col;
             for(int i = 0; i < row; i++){
                 for(int j = 0; j < col; j++){
                     if(maze[i][j] == 'S'){
@@ -70,6 +75,8 @@ public class Maze{
         System.out.println(startx);
         System.out.println(starty);
         System.out.println(touch);
+        System.out.println(rows);
+        System.out.println(cols);
     }
 
     public void printmaze(){
@@ -111,7 +118,7 @@ public class Maze{
         All visited spots that are part of the solution are changed to '@'
 
     */
-    private boolean solve(int x, int y){
+    private boolean solve(int row, int col){
         if(animate){
             System.out.println(this);
             wait(20);
@@ -121,6 +128,22 @@ public class Maze{
         /*
         for(int x = 0; x < 9; x++){    
         }*/
+        if (maze[row][col] == 'E') {
+        		return true;
+        	}else{
+        		maze[row][col] = '@';
+        		if(maze[row - 1][col] != '#' && maze[row - 1][col] != '.' && maze[row - 1][col] != '@' && solve(row - 1,col)){
+        			return true;
+        		}else if(maze[row][col - 1] != '#' && maze[row][col - 1] != '.' && maze[row][col - 1] != '@' && solve(row,col - 1)){
+        			return true;
+        		}else if(maze[row][col + 1] != '#' && maze[row][col + 1] != '.' && maze[row][col + 1] != '@' && solve(row,col + 1)){
+        			return true;
+        		}else if(maze[row + 1][col] != '#' && maze[row + 1][col] != '.' && maze[row + 1][col] != '@' && solve(row + 1,col)){
+        			return true;
+        		}else{
+        			maze[row][col] = '.';
+        		}
+        	}
         return false; //so it compiles
     }
 
