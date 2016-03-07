@@ -22,6 +22,10 @@ o the left.
 
     }
 
+    public static void mergeSort(int[] data){
+        
+    }
+
     public static void main(String[]args){
         int[] ary = { 8, 6, 7, 5, 3, 0, 9};
         int[] ary2 = { 2, 5, 8, 90, 1, 0, 0, 0, 24, 5, 8};
