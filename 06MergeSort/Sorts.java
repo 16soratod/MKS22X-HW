@@ -22,7 +22,7 @@ public class Sorts{
 
     }
 
-    public static void mergeSort(int[] data){
+    public static void mergesort(int[] data){
         mergeH(data, 0, half(data.length), half(data.length) + 1, data.length - 1);
     }
 
