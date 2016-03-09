@@ -45,9 +45,9 @@ public class Quick{
 		if(k == partition(data, left, right)){
 			return data[k];
 		}else if(k > partition(data, left, right)){
-			return quickselect(data, k, left, partition(data, left, right));
+			return quickselect(data, k, left, partition(data, left, right)-1);
 		}else{
-			return quickselect(data, k, partition(data,left,right),right);
+			return quickselect(data, k, partition(data,left,right)+1,right);
 		}
 	}
 	public static void main(String[]args){
