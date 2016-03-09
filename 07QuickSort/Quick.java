@@ -10,7 +10,7 @@ public class Quick{
 	}
 	
 	private static int partition(int[] data, int left, int right) {
-		System.out.println(right);
+		//System.out.println(right);
 		Random r = new Random();
 		int pos = r.nextInt(right);
 		int pivot = data[pos];
@@ -51,11 +51,13 @@ public class Quick{
 		if(k == partition(data, left, right) || data.length < 2 || right == 0){
 			return data[k];
 		}else if(k > partition(data, left, right)){
-			return quickselect(data, k, left, partition(data, left, right));
+			return quickselect(data, k, left, partition(data, left, right))-1;
 		}else{
-			return quickselect(data, k, partition(data,left,right),right);
+			return quickselect(data, k, partition(data,left,right)+1,right);
 		}
 	}
+
+	//public static int[] quick 
 	public static void main(String[]args){
 		Quick a = new Quick();
 		int[] array = new int[]{0,5,7,3,8,2,9};
