@@ -26,6 +26,10 @@ public class Sorts{
         mergeH(data, 0, half(data.length), half(data.length) + 1, data.length - 1);
     }
 
+    public static String name(){
+        return "7,Doken,Sorato";
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////
     public static void merge(int[] data, int start, int end, int start1, int end1){
         int[] nData = new int[(end1 - start1) + (end - start) + 2];
