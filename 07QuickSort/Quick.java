@@ -56,7 +56,8 @@ public class Quick{
 		//System.out.println(a.partition(array,0,array.length));
 		System.out.println("array before: 0,5,7,3,8,2,9");
 		System.out.println("array after: 0,2,3,5,7,8,9 Answer should be 3");
-		a.quickselect(array, 3);
+		System.out.println(a.partition(array,0,array.length-1));
+		a.quickselect(array, 1);
 	}
 
 }
