@@ -5,10 +5,12 @@ public class Quick{
 	//private int[] list;
 	private int pivot;
 	
-	private static int partition(int[] data, int left, int right){
+	private static int partition(int[] data, int left, int right) {
+		System.out.println(right);
 		Random r = new Random();
 		int pos = r.nextInt(right);
 		int pivot = data[pos];
+		System.out.println(pivot);
 		int ret = 0;
 		List<Integer> leftL = new ArrayList<Integer>();
 		List<Integer> rightL = new ArrayList<Integer>();
@@ -45,9 +47,9 @@ public class Quick{
 		if(k == partition(data, left, right)){
 			return data[k];
 		}else if(k > partition(data, left, right)){
-			return quickselect(data, k, left, partition(data, left, right)-1);
+			return quickselect(data, k, left, partition(data, left, right));
 		}else{
-			return quickselect(data, k, partition(data,left,right)+1,right);
+			return quickselect(data, k, partition(data,left,right),right);
 		}
 	}
 	public static void main(String[]args){
@@ -55,9 +57,9 @@ public class Quick{
 		int[] array = new int[]{0,5,7,3,8,2,9};
 		//System.out.println(a.partition(array,0,array.length));
 		System.out.println("array before: 0,5,7,3,8,2,9");
-		System.out.println("array after: 0,2,3,5,7,8,9 Answer should be 3");
+		System.out.println("array after: 0,2,3,5,7,8,9 Answer should be 5");
 		System.out.println(a.partition(array,0,array.length-1));
-		a.quickselect(array, 1);
+		a.quickselect(array, 3);
 	}
 
 }
