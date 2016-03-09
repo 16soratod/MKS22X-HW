@@ -23,6 +23,10 @@ public class Maze{
 
       3. When the file is not found, print an error and exit the program.
     */
+
+    public static String name(){
+    	return " 7, Doken, Sorato";
+    }
     public Maze(String filename, boolean ani){
         //COMPLETE CONSTRUTOR
     try{

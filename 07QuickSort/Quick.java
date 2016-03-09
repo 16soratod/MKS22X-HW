@@ -4,6 +4,10 @@ import java.util.Random;
 public class Quick{
 	//private int[] list;
 	private int pivot;
+
+	public static String name(){
+		return " 7, Doken, Sorato";
+	}
 	
 	private static int partition(int[] data, int left, int right) {
 		System.out.println(right);
@@ -44,7 +48,7 @@ public class Quick{
 		return quickselect(data,k,0,data.length-1);
 	}
 	private static int quickselect(int[]data, int k, int left, int right){
-		if(k == partition(data, left, right)){
+		if(k == partition(data, left, right) || data.length < 2 || right == 0){
 			return data[k];
 		}else if(k > partition(data, left, right)){
 			return quickselect(data, k, left, partition(data, left, right));

@@ -3,6 +3,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class Bronze{
 
+	public static String name(){
+		return " 7, Doken, Sorato";
+	}
 	public static void main(String[] args){
 		int[][] field;
 		int[] stompD;

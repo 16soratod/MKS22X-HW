@@ -1,6 +1,10 @@
 public class QueenBoard{
     private int[][]board;
     
+    public static String name(){
+    	return " 7, Doken, Sorato";
+    }
+
     public QueenBoard(int size){
 	board = new int[size][size];
     }

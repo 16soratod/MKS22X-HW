@@ -4,6 +4,10 @@ public class KnightBoard{
     private int r;
     private int c;
     
+    public static String name(){
+    	return " 7, Doken, Sorato";
+    }
+
     public KnightBoard(int size){
 		board = new int[size][size];
 		/*
