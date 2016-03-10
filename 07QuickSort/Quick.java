@@ -25,7 +25,7 @@ public class Quick{
 		int start = left + 1;
 		int end = right;
 		while(start < end){
-			if (data[start] > data[left] && data[start] < data[end]){
+			if (data[start] > data[left]){
 				swap(data, start, end);
 				end--;
 			}else{
@@ -79,9 +79,9 @@ public class Quick{
 		//System.out.println(a.partition(array,0,array.length));
 		System.out.println("array before: 7,8,4,5,6,9,0,2,3,1");
 		//System.out.println("array after: 0,2,3,5,7,8,9 Answer should be 5");
-		//System.out.println(a.partition(array,0,array.length-1));
+		a.partition(array,0,array.length-1);
 		//System.out.println(a.quickselect(array, 3));
-		//System.out.println(Arrays.toString(array));
+		System.out.println(Arrays.toString(array));
 		//int[] array2 = new int[]{7,8,4,5,6,9,0,2,3,1};
 		a.quickSort(array);
 		System.out.println(Arrays.toString(array));
