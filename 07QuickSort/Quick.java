@@ -25,7 +25,7 @@ public class Quick{
 		int start = left + 1;
 		int end = right;
 		while(start < end){
-			if (data[start] > data[left]){
+			if (data[start] > data[left] && data[end]<data[left]){
 				swap(data, start, end);
 				end--;
 			}else{
@@ -74,6 +74,10 @@ public class Quick{
 	}
 
 	public static void main(String[]args){
+		int[] ary = new int[6000000];
+		for(int i = 0; i < ary.length; i++){
+			ary[i] = (int)(Math.random()*7);
+		}
 		Quick a = new Quick();
 		int[] array = new int[]{7,8,4,5,6,9,0,2,3,1};
 		//System.out.println(a.partition(array,0,array.length));
