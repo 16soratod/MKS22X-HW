@@ -3,77 +3,118 @@ public class MyLinkedList{
 	LNode end;
 	int size;
 
-	private int get(int index){
+	public int get(int index){
+		LNode p = start;
+		for(int i = 0; i < index; i++){
+			p = p.getNext();
+		}
+		return p.getValue();
+	}
+
+	public int set(int index,int newValue){
+		LNode p = start;
+		for(int i = 0; i < index; i++){
+			p = p.getNext();
+		}
+		p.setValue(newValue);
 		return index;
 	}
 
-	private int set(int index,int newValue){
-		return index;
-	}
-
-	private int size(){
+	public int size(){
 		return size;
 	}
 
-	private int remove(int index){
+	public int remove(int index){
+		LNode p = start;
+		LNode b = null;
+		for(int i = 0; i < index; i++){
+			p = p.getNext();
+		}
+		p.setNext(p.getNext());
+		//p.setNext()
 		return index;
 	}
 
-	public boolean add(int index, int value){	
+	public boolean add(int index, int value){
+		LNode p = start;
+		for(int i = 0; i < index-1; i++){
+			p = p.getNext();
+		}
+		size++;
+		//LNode newL = new LNode(value);
+		p.setNext(new LNode(value));
 		return true;
 	}
 
 	public boolean add(int value){
 		size++;
-		LNode current = start;
-		if (current == null){
-			current = new LNode(value, new LNode());
-			end = current;
+		//LNode current = start;
+		if (start == null){
+			start = new LNode(value);
+			//end = current;
 			return true;
 		}else{
-			return false;
+			LNode p = start;
+			while(p.getNext() != null){
+				p = p.getNext();
+			}
+			p.setNext(new LNode(value));
 		}
+		return true;
 	}
 
-	private int indexOf(int value){
-		return value;
-	}
-
-	public String tostring(){
-		String ret = "";
-		LNode a = new LNode();
+	public int indexOf(int value){
 		for(int i = 0; i < size; i++){
-			ret += a.getValue();
-			ret += ",";
+			if(value == get(i)){
+				return i;
+			}
 		}
-		return ret;
-	}
-	public class LNode{
-		int data;
-		LNode next;
-
-	public LNode(){}
-
-	public LNode(int data, LNode next){
-		this.data = data;
-		this.next = next;
+		return (-1);
 	}
 
-	public void setValue(int value){
-		data = value;
+	public String toString(){
+		String ret = "[";
+		//LNode a = new LNode();
+		LNode next = start;
+		int ctr = 0;
+		while(ctr < size){
+			ret+=next.getValue();
+			if(next.getNext() != null){
+				ret+= " , ";
+			}
+			next = next.getNext();
+			ctr++;
+		}
+		return ret + "]";
 	}
 
-	public LNode getNext(){
-		return next;
-	}
+	//////////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~////////////////////
 
-	public int getValue(){
-		return data;
-	}
+	private class LNode{
+		private int data;
+		private LNode next;
 
-	public void setNext(LNode value){
-		next = value; 
+		public LNode(){}
+
+		public LNode(int data){
+			this.data = data;
+		}
+
+		public void setValue(int value){
+			data = value;
+		}
+
+		public LNode getNext(){
+			return next;
+		}
+
+		public int getValue(){
+			return data;
+		}
+
+		public void setNext(LNode next){
+			this.next = next; 
+		}
 	}
-}
 
 }
