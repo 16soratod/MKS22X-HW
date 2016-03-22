@@ -1,9 +1,9 @@
-public class MyLinkedList{
+public class MyLinkedList<T>{
 	LNode start;
 	LNode end;
 	int size;
 
-	public int get(int index){
+	public T get(int index){
 		LNode p = start;
 		for(int i = 0; i < index; i++){
 			p = p.getNext();
@@ -11,7 +11,7 @@ public class MyLinkedList{
 		return p.getValue();
 	}
 
-	public int set(int index,int newValue){
+	public int set(int index,T newValue){
 		LNode p = start;
 		for(int i = 0; i < index; i++){
 			p = p.getNext();
@@ -25,28 +25,38 @@ public class MyLinkedList{
 	}
 
 	public int remove(int index){
-		LNode p = start;
-		LNode b = null;
-		for(int i = 0; i < index; i++){
-			p = p.getNext();
+		if(index < 1 || index > size){
+			return -1;
 		}
-		p.setNext(p.getNext());
-		//p.setNext()
+		LNode p = start;
+		if(start != null){
+			for (int i = 0; i < index-1; i++) {
+				if (p.getNext() == null)
+					return -1;
+				p = p.getNext();
+			}
+			p.setNext(p.getNext().getNext());
+		}
+		size--;
 		return index;
 	}
 
-	public boolean add(int index, int value){
+	public boolean add(int index, T value){
 		LNode p = start;
-		for(int i = 0; i < index-1; i++){
-			p = p.getNext();
+		LNode temp = new LNode(value);
+		if(p != null){
+			for(int i = 0; i < index && p.getNext() != null; i++){
+				p = p.getNext();
+			}
 		}
+		temp.setNext(p.getNext());
+		p.setNext(temp);
 		size++;
 		//LNode newL = new LNode(value);
-		p.setNext(new LNode(value));
 		return true;
 	}
 
-	public boolean add(int value){
+	public boolean add(T value){
 		size++;
 		//LNode current = start;
 		if (start == null){
@@ -63,7 +73,7 @@ public class MyLinkedList{
 		return true;
 	}
 
-	public int indexOf(int value){
+	public int indexOf(T value){
 		for(int i = 0; i < size; i++){
 			if(value == get(i)){
 				return i;
@@ -91,16 +101,16 @@ public class MyLinkedList{
 	//////////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~////////////////////
 
 	private class LNode{
-		private int data;
+		private T data;
 		private LNode next;
 
 		public LNode(){}
 
-		public LNode(int data){
+		public LNode(T data){
 			this.data = data;
 		}
 
-		public void setValue(int value){
+		public void setValue(T value){
 			data = value;
 		}
 
@@ -108,7 +118,7 @@ public class MyLinkedList{
 			return next;
 		}
 
-		public int getValue(){
+		public T getValue(){
 			return data;
 		}
 

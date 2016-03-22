@@ -1,5 +1,6 @@
 public class Driver08{
 	public static void main(String[]args){
+		/*
 		MyLinkedList list = new MyLinkedList();
 		list.add(5);
 		list.add(100);
@@ -9,9 +10,13 @@ public class Driver08{
 		System.out.println(list.size());
 		System.out.println(list.indexOf(200));
 		System.out.println(list);
-		//list.remove(2);
+		list.remove(1);
 		//list.set(2,200);
-		list.add(2,3);
+		list.add(1,3);
 		System.out.println(list);
+		*/
+		MyLinkedList<String> s = new MyLinkedList<String>();
+		s.add("Hello");
+		System.out.println(s);
 	}
 }
