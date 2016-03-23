@@ -35,13 +35,21 @@ public class MyLinkedList<T>{
 			throw new IndexOutOfBoundsException("oops");
 		}
 		LNode p = start;
-		if(start != null){
+		if(index == 0){
+			//LNode temp = p.getNext();
+			p.setValue(null);
+			start = p.getNext();
+			p.setNext(p.getNext().getNext());
+		}else if(start != null){
 			for (int i = 0; i < index-1; i++) {
 				if (p.getNext() == null)
 					return -1;
 				p = p.getNext();
 			}
 			p.setNext(p.getNext().getNext());
+			if(index == size-1){
+				end = p;
+			}
 		}
 		size--;
 		return index;
@@ -53,13 +61,16 @@ public class MyLinkedList<T>{
 		}
 		LNode p = start;
 		LNode temp = new LNode(value);
-		if(p != null){
+		if(index == 0){
+			temp.setNext(p);
+			start = temp;
+		}else if(p != null){
 			for(int i = 0; i < index && p.getNext() != null; i++){
 				p = p.getNext();
 			}
+			temp.setNext(p.getNext());
+			p.setNext(temp);
 		}
-		temp.setNext(p.getNext());
-		p.setNext(temp);
 		size++;
 		//LNode newL = new LNode(value);
 		return true;
