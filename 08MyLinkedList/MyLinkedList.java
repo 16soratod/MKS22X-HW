@@ -4,6 +4,9 @@ public class MyLinkedList<T>{
 	int size;
 
 	public T get(int index){
+		if(index < 0 || index > size){
+			throw new IndexOutOfBoundsException("don't do it");
+		}
 		LNode p = start;
 		for(int i = 0; i < index; i++){
 			p = p.getNext();
@@ -12,6 +15,9 @@ public class MyLinkedList<T>{
 	}
 
 	public int set(int index,T newValue){
+		if(index < 0 || index > size){
+			throw new IndexOutOfBoundsException("enter positive index");
+		}
 		LNode p = start;
 		for(int i = 0; i < index; i++){
 			p = p.getNext();
@@ -25,8 +31,8 @@ public class MyLinkedList<T>{
 	}
 
 	public int remove(int index){
-		if(index < 1 || index > size){
-			return -1;
+		if(index < 0 || index > size){
+			throw new IndexOutOfBoundsException("oops");
 		}
 		LNode p = start;
 		if(start != null){
@@ -42,6 +48,9 @@ public class MyLinkedList<T>{
 	}
 
 	public boolean add(int index, T value){
+		if(index < 0 || index > size){
+			throw new IndexOutOfBoundsException("oh no!");
+		}
 		LNode p = start;
 		LNode temp = new LNode(value);
 		if(p != null){
@@ -58,6 +67,7 @@ public class MyLinkedList<T>{
 
 	public boolean add(T value){
 		size++;
+		//end++;
 		//LNode current = start;
 		if (start == null){
 			start = new LNode(value);
@@ -74,6 +84,9 @@ public class MyLinkedList<T>{
 	}
 
 	public int indexOf(T value){
+		/*if(index < 0 || index > size){
+			throw new IndexOutOfBoundsException("oopsie daisies");
+		}*/
 		for(int i = 0; i < size; i++){
 			if(value == get(i)){
 				return i;
@@ -95,8 +108,28 @@ public class MyLinkedList<T>{
 			next = next.getNext();
 			ctr++;
 		}
-		return ret + "]";
+		return ret + "]" + " HEAD: " + start.getValue() + " TAIL: " + end;
 	}
+
+/*
+	public String toString(boolean yes){
+		if(yes){
+			String ret = "[";
+			//LNode a = new LNode();
+			LNode next = start;
+			int ctr = 0;
+				while(ctr < size){
+				ret+=next.getValue();
+				if(next.getNext() != null){
+					ret+= " , ";
+				}
+				next = next.getNext();
+				ctr++;
+			}
+			return ret + "]" + " HEAD: " + indexOf(start) + " TAIL: " + indexOf(end);
+		}	
+	}
+	*/
 
 	//////////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~////////////////////
 

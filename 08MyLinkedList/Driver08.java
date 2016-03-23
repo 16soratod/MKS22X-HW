@@ -17,6 +17,8 @@ public class Driver08{
 		*/
 		MyLinkedList<String> s = new MyLinkedList<String>();
 		s.add("Hello");
+		s.add("there");
+		s.add("what");
 		System.out.println(s);
 	}
 }
