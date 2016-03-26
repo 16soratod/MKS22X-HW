@@ -47,10 +47,12 @@ public class Driver{
         m.remove(0);
         n.remove(0);
         System.out.println(m.toString());
+        System.out.println(n);
 
         m.remove(2);
         n.remove(2);
         System.out.println(m.toString());
+        System.out.println(n);
 
         m.remove(m.size()-1);
         n.remove(n.size()-1);
@@ -85,6 +87,7 @@ public class Driver{
                 m.add(x,""+i);
             }else{
                 int x = rand.nextInt(n.size());
+                System.out.print(x);
                 if(!n.remove(x).equals(m.remove(x))){
                     System.out.println("Non matching elements removed\n");
                     System.exit(1);
@@ -94,7 +97,7 @@ public class Driver{
         System.out.println(m.toString());
         System.out.println(n);
 
-        /*test speed of add in front and at end.
+        //test speed of add in front and at end.
         long start,end;
         System.out.println("Add 100k to front");
 
@@ -125,6 +128,13 @@ public class Driver{
         end = System.currentTimeMillis();
         System.out.println( "LinkedList "+(end-start)/1000.0 );
 
-        */
+
+        //////////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~////////////////////
+
+        /*Iterator<Integer> it = n.iterator();
+        System.out.println(it.hasNext());
+        System.out.println(it.next());*/
+
+        
     }
 }

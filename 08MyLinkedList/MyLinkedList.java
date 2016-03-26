@@ -1,5 +1,8 @@
 import java.util.Iterator;
+import java.util.*;
 public class MyLinkedList<T> implements Iterable<T>{
+
+//////////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~////////////////////
 
 	public Iterator<T> iterator(){
 		return new LLIterator();
@@ -7,6 +10,9 @@ public class MyLinkedList<T> implements Iterable<T>{
 
 	public class LLIterator implements Iterator<T>{
 		LNode current;
+		public LLIterator(){
+			current=start;
+		}
 		public boolean hasNext(){
 			if(current.getNext() == null){
 				return false;
@@ -18,12 +24,29 @@ public class MyLinkedList<T> implements Iterable<T>{
 			throw new UnsupportedOperationException("oops");
 		}
 		public T next(){
+			current = current.getNext();
+			if(current == null){
+				throw new NoSuchElementException();
+			}
 			return current.getValue();
 		}
 	}
+
+//////////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~////////////////////
+
 	LNode start;
 	LNode end;
 	int size;
+	/*
+	public static double sumL(MyLinkedList list){
+		double ret = 0.0;
+		int ctr = 0;
+		while(list.hasNext()){
+			ret = ret + list.get(ctr);
+			ctr++;
+		}
+		return ret;	
+	}*/
 
 	public T get(int index){
 		if(index < 0 || index > size){
@@ -45,6 +68,9 @@ public class MyLinkedList<T> implements Iterable<T>{
 			p = p.getNext();
 		}
 		p.setValue(newValue);
+		if(index == size - 1){
+			end = p;
+		}
 		return index;
 	}
 
@@ -69,10 +95,10 @@ public class MyLinkedList<T> implements Iterable<T>{
 				p = p.getNext();
 			}
 			p.setNext(p.getNext().getNext());
-			if(index == size-1){
+		}
+		if(index == size-1){
 				end = p;
 			}
-		}
 		size--;
 		return index;
 	}
@@ -93,6 +119,9 @@ public class MyLinkedList<T> implements Iterable<T>{
 			temp.setNext(p.getNext());
 			p.setNext(temp);
 		}
+		if(index == size){
+			end = temp;
+		}
 		size++;
 		//LNode newL = new LNode(value);
 		return true;
@@ -104,7 +133,7 @@ public class MyLinkedList<T> implements Iterable<T>{
 		//LNode current = start;
 		if (start == null){
 			start = new LNode(value);
-			//end = current;
+			end = start;
 			return true;
 		}else{
 			LNode p = start;
@@ -112,6 +141,7 @@ public class MyLinkedList<T> implements Iterable<T>{
 				p = p.getNext();
 			}
 			p.setNext(new LNode(value));
+			end = p.getNext();
 		}
 		return true;
 	}
@@ -136,12 +166,12 @@ public class MyLinkedList<T> implements Iterable<T>{
 		while(ctr < size){
 			ret+=next.getValue();
 			if(next.getNext() != null){
-				ret+= " , ";
+				ret+= ", ";
 			}
 			next = next.getNext();
 			ctr++;
 		}
-		return ret + "]" + " HEAD: " + start.getValue() + " TAIL: " + end;
+		return ret + "]";// + " HEAD: " + start.getValue() + " TAIL: " + end.getValue();
 	}
 
 /*
@@ -190,6 +220,23 @@ public class MyLinkedList<T> implements Iterable<T>{
 
 		public void setNext(LNode next){
 			this.next = next; 
+		}
+	}
+
+	public static void main(String[] args) {
+		MyLinkedList<String> n = new MyLinkedList<String>();
+
+		n.add("S");
+		n.add("N");
+		n.add("R");
+		n.add("T");
+		n.add("Y");
+		n.add("W");
+		n.add("Q");
+		n.add("S");
+		System.out.println(n);
+		for(String l : n){
+			System.out.println(l);
 		}
 	}
 
