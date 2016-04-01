@@ -168,21 +168,16 @@ public class MyLinkedList<T> implements Iterable<T>{
     }
 
 ///////////////////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//////////////////////////////
+/*
 
 public class MyQueue<T>{
 
     public MyLinkedList<T> current;
-     /**
-     * Adds the given item to the rear of the queue.
-     */
+ 
     public void enqueue(T item){
         current.add(current.size()-1, item);
     }
 
-    /*
-     * Removes the front item from the queue and returns it.
-     * @exception java.util.NoSuchElementException if the queue is empty.
-     */
     public T dequeue(){
         if(size() == 0){
             throw new NoSuchElementException("index out of bounds");
@@ -191,24 +186,15 @@ public class MyQueue<T>{
         }
     }
 
-    /*
-     * Returns the front item from the queue without popping it.
-     * @exception java.util.NoSuchElementException if the queue is empty.
-     */
     public T peek(){
         return current.get(0);
     }
 
-    /*
-     * Returns the number of items currently in the queue.
-     */
+
     public int size(){
         return current.size();
     }
 
-    /*
-     * Returns whether the queue is empty or not.
-     */
     public boolean isEmpty(){
         if(current == null){
             return true;
@@ -222,9 +208,7 @@ public class MyQueue<T>{
 ///////////////////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//////////////////////////////
 
 public class MyStack<T>{
-    /*
-     * Adds the given item to the top of the stack.
-     */
+
     public MyLinkedList<T> data;
 
     public MyStack(){
@@ -234,10 +218,7 @@ public class MyStack<T>{
         data.add(0, item);
     }
 
-    /*
-     * Removes the top item from the stack and returns it.
-     * @exception java.util.NoSuchElementException if the queue is empty.
-     */
+
     public T pop(){
         if(size() == 0){
             throw new NoSuchElementException("index out of bounds");
@@ -246,24 +227,16 @@ public class MyStack<T>{
         }
     }
 
-    /*
-     * Returns the top item from the stack without popping it.
-     * @exception java.util.NoSuchElementException if the queue is empty.
-     */
     public T peek(){
         return data.get(0);
     }
 
-    /*
-     * Returns the number of items currently in the stack.
-     */
+
     public int size(){
         return data.size();
     }
 
-    /*
-     * Returns whether the stack is empty or not.
-     */
+
     public boolean isEmpty(){
         if(data == null){
             return true;
@@ -276,24 +249,18 @@ public class MyStack<T>{
 
 ///////////////////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//////////////////////////////
 
+
     public static boolean isMatching(String s){
+        MyStack<Character> stack = new MyStack();
+        for(int i = 0; i < s.length(); i++){
+            stack.push(s.charAt(i));
+        }
+        System.out.println(stack);
         return true;
     }
+*/
 
 ///////////////////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//////////////////////////////
 
-    
-    public static void main(String[]args){
-        String input = "()()(([[]]))";
-        if(args.length > 0){
-            input = args[0];
-            //System.out.println( isMatching(input)); 
-        }else{
-            System.out.println("Usage:"); 
-            System.out.println("java ParenDemo \"text\""); 
-        }
-
-        System.out.println(input.split("[()]+"));
-    }
 
 }

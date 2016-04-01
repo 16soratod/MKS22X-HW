@@ -1,5 +1,5 @@
 import java.util.*;
-public class MyStack<T>{
+public class MyStack<T> extends MyLinkedList<T>{
     /*
      * Adds the given item to the top of the stack.
      */
@@ -8,6 +8,7 @@ public class MyStack<T>{
     public MyStack(){
         data = new MyLinkedList<T>();
     }
+
     public void push(T item){
         data.add(0, item);
     }
