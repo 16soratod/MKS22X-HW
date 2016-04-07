@@ -4,28 +4,35 @@ public class MyLinkedList<T> implements Iterable<T>{
 ///////////////////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//////////////////////////////
 
     private class LNode{
- private T value;
- private LNode next;
- public LNode(T v){
-     value = v;
- }
- public T getValue(){
-     return value;
- }
- public LNode getNext(){
-     return next;
- }
- public T setValue(T v){
-     T old = value;
-     value = v;
-     return old;
- }
- public void setNext(LNode n){
-     next = n;
- }
- public String toString(){
-     return value.toString();
- }
+        private T value;
+        private LNode next;
+        private LNode prev;
+        public LNode(T v){
+            value = v;
+        }    
+        public T getValue(){
+            return value;
+        }
+        public LNode getNext(){
+            return next;
+        }
+        public LNode getPrev(){
+            return prev;
+        }
+        public T setValue(T v){
+            T old = value;
+            value = v;
+            return old;
+        }
+        public void setNext(LNode n){
+            next = n;
+        }
+        public void setPrev(LNode n){
+            prev = n;
+        }
+        public String toString(){
+            return value.toString();
+        }
     }
 
     LNode head;
@@ -33,50 +40,74 @@ public class MyLinkedList<T> implements Iterable<T>{
     int size;
     
     public Iterator<T> iterator(){
- //This uses an anonymous class! You don't need to know this.
- return new Iterator<T>()
- {
-     private LNode current = head;
+    //This uses an anonymous class! You don't need to know this.
+        return new Iterator<T>()
+    {
+        private LNode current = head;
 
-     public boolean hasNext(){
- return current != null;
-     }
-     public T next(){
- if(!hasNext()){
-     throw new NoSuchElementException();
- }
- T value = current.getValue();
- current = current.getNext();
- return value;
-     }
-     public void remove(){
- throw new UnsupportedOperationException();
-     }
- };
+        public boolean hasNext(){
+            return current != null;
+        }
+        public T next(){
+            if(!hasNext()){
+                throw new NoSuchElementException();
+            }
+            T value = current.getValue();
+            current = current.getNext();
+            return value;
+        }
+        public void remove(){
+            throw new UnsupportedOperationException();
+        }
+    };
     } 
+
+    public Iterator<T> iteratorBack(){
+    //This uses an anonymous class! You don't need to know this.
+        return new Iterator<T>()
+    {
+        private LNode current = head;
+
+        public boolean hasNext(){
+            return current != null;
+        }
+        public T next(){
+            if(!hasNext()){
+                throw new NoSuchElementException();
+            }
+            T value = current.getValue();
+            current = current.getPrev();
+            return value;
+        }
+        public void remove(){
+            throw new UnsupportedOperationException();
+        }
+    };
+    } 
+
     public String toString(){
- String ans = "[";
- LNode p = head;
- while(p!=null){
-     ans += p.getValue();
-     if(p.getNext()!=null){
- ans += ", ";
-     }
-     p = p.getNext();
- }
- return ans+"]";
+        String ans = "[";
+        LNode p = head;
+        while(p!=null){
+            ans += p.getValue();
+            if(p.getNext()!=null){
+                ans += ", ";
+            }
+        p = p.getNext();
+        }
+        return ans+"]";
     }
     public String toString(boolean b){
- return toString()+" head: "+head +", tail: "+tail;
+        return toString()+" head: "+head +", tail: "+tail;
     }
     private LNode getNth(int index){
- //check bounds before calling this method!
- LNode temp = head;
- while(index > 0){
-     temp = temp.getNext();
-     index --;
- }
- return temp;
+    //check bounds before calling this method!
+        LNode temp = head;
+        while(index > 0){
+            temp = temp.getNext();
+            index --;
+            }
+        return temp;
     }
     public boolean add(T value){
  if(head == null){
@@ -102,23 +133,36 @@ public class MyLinkedList<T> implements Iterable<T>{
  tail = null;
      }
      return temp.getValue();
+ }else if(size() == 1){
+    temp = head;
+    head = null;
+    tail = null;
+ }else if(index == size() - 1){
+    temp = tail;
+    tail = tail.getPrev();
+    tail.setNext(null);
  }else{
      LNode p = getNth(index-1);
      temp = p.getNext();
-     if(tail == temp){
- tail = p;
+     p.setNext(temp.getNext());
+     temp.getNext().setPrev(p);
+     /*if(tail == temp){
+        tail = p;
      }
-     p.setNext(p.getNext().getNext());
+     p.setNext(p.getNext().getNext());*/
+ }
      size --;
      return temp.getValue();
  }
-    }
     public boolean add(int index, T value){
  if(index < 0 || index > size()){
      throw new IndexOutOfBoundsException("Index "+index+", Size: "+size());
  }
  LNode temp = new LNode(value); 
- if(index == 0){
+ if(index == size()){
+    return add(value);
+ }else if(index == 0){
+    head.setPrev(temp);
      temp.setNext(head);
      head = temp;
      if(size==0){
@@ -127,10 +171,12 @@ public class MyLinkedList<T> implements Iterable<T>{
  }else{ 
      LNode p = getNth(index-1);
      temp.setNext(p.getNext());
+     temp.setPrev(p);
+     p.getNext().setPrev(temp);
      p.setNext(temp);
-     if(tail.getNext() != null){
+     /*if(tail.getNext() != null){
  tail=tail.getNext();
-     }
+     }*/
  }
  size++;
  return true;

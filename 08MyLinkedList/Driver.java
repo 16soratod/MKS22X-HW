@@ -74,7 +74,7 @@ public class Driver{
         System.out.println(n);
 
         //test remove random items:
-        Random rand = new Random(0);
+        /*Random rand = new Random(0);
         for(int i = 0; i < 6000; i++){
             int op = rand.nextInt(4);
 
@@ -93,7 +93,7 @@ public class Driver{
                     System.exit(1);
                 }
             }
-        }
+        }*/
         System.out.println(m.toString());
         System.out.println(n);
 
@@ -131,9 +131,9 @@ public class Driver{
 
         //////////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~////////////////////
 
-        /*Iterator<Integer> it = n.iterator();
+        Iterator<Integer> it = n.iterator();
         System.out.println(it.hasNext());
-        System.out.println(it.next());*/
+        System.out.println(it.next());
 
         
     }

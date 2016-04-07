@@ -85,7 +85,7 @@ public class Quick{
 		System.out.println("index "+index);
 		System.out.println("data[index] " + data[index]);
 		//write a swap fxn
-		int tempNum = data[index];
+		int tempNum = data[right-left+1];
 		swap(data, index, left);
 		//loop through all values, and leave them alone, or swap to end
 		int start = left + 1;

@@ -7,6 +7,7 @@ public class ParenDemo{
     	for( char next : s.toCharArray() ){
     		if(next == '(' || next == '{' || next == '[' || next == '<' ){
     			n.push(next);
+    			//System.out.println(n);
     		}
     		if(next == ')' || next == '}' || next == ']' || next == '>' ){
     			char temp = getMatch(next);
@@ -18,6 +19,7 @@ public class ParenDemo{
     			}catch(NoSuchElementException e){
     				return false;
     			}
+    			//System.out.println(n);
     		}
     	}
     		if(!n.isEmpty()){
@@ -45,6 +47,7 @@ public class ParenDemo{
     	if(c == '>'){
     		match = '<';
     	}
+    	//System.out.println(match);
     	return match;
     }
 
@@ -58,6 +61,7 @@ public class ParenDemo{
         }else{
             System.out.println("Usage:"); 
             System.out.println("java ParenDemo \"text\""); 
+            System.out.println(input);
             System.out.println(isMatching(input));
         }
         //System.out.println(input.split("[()]+"));

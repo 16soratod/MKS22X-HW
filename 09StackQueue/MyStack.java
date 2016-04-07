@@ -44,7 +44,7 @@ public class MyStack<T> extends MyLinkedList<T>{
      * Returns whether the stack is empty or not.
      */
     public boolean isEmpty(){
-        if(data == null){
+        if(data.size() == 0){
             return true;
         }else{
             return false;
